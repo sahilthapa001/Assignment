@@ -7,14 +7,14 @@ const routes = require("./controller/routes");
 
 const app = express();
 
-//connect to MongoDb
-mongoose
-  .connect(process.env.MONGO_DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("mongodb conneected"))
-  .catch((err) => console.log("error connecting mongodb ", err));
+// //connect to MongoDb
+// mongoose
+//   .connect(process.env.MONGO_DB, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("mongodb conneected"))
+//   .catch((err) => console.log("error connecting mongodb ", err));
 
 //Middleware
 

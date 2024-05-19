@@ -15,8 +15,7 @@ const initialState = {
 
 const userSlice = createSlice({
   name: "user",
-  initialState: initialState,
-
+  initialState,
   extraReducers: (builder) => {
     builder
       .addCase(loginAsync.pending, (state) => {
@@ -31,7 +30,6 @@ const userSlice = createSlice({
       .addCase(loginAsync.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.error.message || "An error occurred";
-        throw action.error;
       })
       .addCase(createUserAsync.pending, (state) => {
         state.loading = "pending";
@@ -43,7 +41,6 @@ const userSlice = createSlice({
       .addCase(createUserAsync.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.error.message || "An error occurred";
-        throw action.error;
       })
       .addCase(activateUserAsync.pending, (state) => {
         state.loading = "pending";
@@ -57,7 +54,6 @@ const userSlice = createSlice({
       .addCase(activateUserAsync.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.error.message || "An error occurred";
-        throw action.error;
       })
       .addCase(autoLoginAsync.pending, (state) => {
         state.loading = "pending";
@@ -75,4 +71,4 @@ const userSlice = createSlice({
   },
 });
 
-export default userSlice;
+export default userSlice.reducer;

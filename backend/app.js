@@ -1,20 +1,16 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const errorMilddelware = require("./middleware/error");
-const mongoose = require("mongoose");
-const routes = require("./controller/routes");
 
+const db = require("./db/db");
 const app = express();
+const router = require("./controller");
 
-// //connect to MongoDb
-// mongoose
-//   .connect(process.env.MONGO_DB, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("mongodb conneected"))
-//   .catch((err) => console.log("error connecting mongodb ", err));
+//connect to mongo db
+db.connectDatabase();
 
 //Middleware
 
@@ -29,10 +25,7 @@ app.use(cookieParser());
 
 //routes
 
-app.use("/api", routes);
+app.use("/api", router);
 app.use(errorMilddelware);
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
 
 module.exports = app;

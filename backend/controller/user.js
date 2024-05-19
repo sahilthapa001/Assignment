@@ -5,7 +5,7 @@ const userModel = require("../models/User");
 const SahilError = require("../utils/error");
 const sendToken = require("../utils/jwtToken");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-
+const { isAuthenticated } = require("../middleware/auth");
 const userRouter = express.Router();
 
 userRouter.get(
